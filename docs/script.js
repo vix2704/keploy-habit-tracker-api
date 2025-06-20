@@ -4,10 +4,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const seeListBtn = document.querySelector(".btn:nth-child(2)");
   const deleteHabitBtn = document.querySelector(".btn:nth-child(3)");
 
+  const BASE_URL = "https://keploy-habit-tracker-api.onrender.com";
+
   // Fetch and display habits
   async function fetchHabits() {
     try {
-      const response = await fetch("http://127.0.0.1:8000/habits/");
+      const response = await fetch(`${BASE_URL}/habits/`);
       const habits = await response.json();
 
       habitList.innerHTML = ""; // Clear existing
@@ -45,11 +47,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/habits/", {
+      const res = await fetch(`${BASE_URL}/habits/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          id: "string", // Placeholder; real ID comes from backend
+          id: "string", // Placeholder
           name,
           description,
           is_complete: false
@@ -74,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!nameToDelete) return;
 
     try {
-      const habits = await fetch("http://127.0.0.1:8000/habits/").then(res => res.json());
+      const habits = await fetch(`${BASE_URL}/habits/`).then(res => res.json());
       const habit = habits.find(h => h.name === nameToDelete);
 
       if (!habit) {
@@ -82,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      const res = await fetch(`http://127.0.0.1:8000/habits/${habit._id}`, {
+      const res = await fetch(`${BASE_URL}/habits/${habit._id}`, {
         method: "DELETE"
       });
 
