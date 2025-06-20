@@ -4,6 +4,13 @@ from backend.models import Habit
 from backend.crud import create_habit, get_all_habits, update_habit, delete_habit
 
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["https://vix2704.github.io"],  # GitHub Pages URL
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 app.add_middleware(
     CORSMiddleware,
