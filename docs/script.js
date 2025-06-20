@@ -51,7 +51,6 @@ document.addEventListener("DOMContentLoaded", () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          id: "string", // Placeholder
           name,
           description,
           is_complete: false
@@ -79,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const habits = await fetch(`${BASE_URL}/habits/`).then(res => res.json());
       const habit = habits.find(h => h.name === nameToDelete);
 
-      if (!habit) {
+      if (!habit || !habit._id) {
         alert("Habit not found.");
         return;
       }
@@ -102,5 +101,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // See List = re-fetch habits
   seeListBtn.addEventListener("click", fetchHabits);
 
+  // Initial load
   fetchHabits();
 });
