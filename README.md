@@ -76,7 +76,8 @@ Open `frontend/index.html` in a web browser.
 * **Frontend:** [https://vix2704.github.io/keploy-habit-tracker-api/](https://vix2704.github.io/keploy-habit-tracker-api/)
 
 ---
-Testing
+##Testing
+
 wrote unit, integration, and API tests using pytest and pytest-cov.
 
 To run tests:
