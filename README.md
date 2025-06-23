@@ -1,6 +1,6 @@
 # Habit Tracker API
 
-A professional, full-stack habit tracking application featuring a FastAPI backend with MongoDB and a polished frontend**.
+A Full-stack habit tracking application featuring a FastAPI backend with MongoDB and a polished frontend**.
 
 > Developed as part of the Keploy API Fellowship (June 2025)
 
@@ -76,7 +76,18 @@ Open `frontend/index.html` in a web browser.
 * **Frontend:** [https://vix2704.github.io/keploy-habit-tracker-api/](https://vix2704.github.io/keploy-habit-tracker-api/)
 
 ---
+Testing
+wrote unit, integration, and API tests using pytest and pytest-cov.
 
+To run tests:
+bash
+
+python -m pytest --cov=backend tests/
+Test Coverage:
+![image](https://github.com/user-attachments/assets/6e95922a-a4ce-4e0f-a0a5-cebd444c764d)
+
+✅ Total Coverage: 72%
+✅ Tools Used: pytest, pytest-cov, httpx, mongomock
 ## Author
 
 **Vijaya Mahato**
