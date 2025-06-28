@@ -1,0 +1,43 @@
+name: Keploy API Testing
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  keploy-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install -r requirements.txt
+
+      - name: Start FastAPI server
+        run: |
+          source venv/bin/activate
+          uvicorn backend.main:app --host 0.0.0.0 --port 8000 &
+          sleep 5
+
+      - name: Run Keploy Test Cases
+        run: |
+          curl -s https://raw.githubusercontent.com/keploy/keploy/main/install.sh | bash
+          ./keploy test -c "curl http://localhost:8000/habits/" --delay 2
+
+      - name: Upload Keploy Reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: keploy-reports
+          path: keploy/reports
