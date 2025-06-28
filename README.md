@@ -57,6 +57,17 @@ python -m pytest --cov=backend tests/
 3. Integration tests
 ![image](https://github.com/user-attachments/assets/e851378f-2efc-46c6-b1b9-f915dae4f499)
 
+AI TESTING using Keploy:
+![Screenshot 2025-06-28 092259](https://github.com/user-attachments/assets/93ebf79f-af38-4844-936e-eb6f72c002f7)
+CI/CD Integration
+
+This project uses GitHub Actions for CI/CD to run automated Keploy AI-based API testing whenever changes are pushed.
+
+GitHub Actions workflow is defined in .github/workflows/keploy.yml
+
+Automatically triggers test execution with Keploy
+
+Ensures high-quality releases with consistent test coverage
 
 Author
 
